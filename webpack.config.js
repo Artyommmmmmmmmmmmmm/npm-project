@@ -1,7 +1,6 @@
 
-require('env.js')
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-
+const hotState = process.env.NODE_ENV === 'production' ? false : true
 
 
 module.exports = {
@@ -10,7 +9,7 @@ module.exports = {
    devServer: {
      static: './dist',
      port: 3001,
-     hot: process.env.NODE_ENV === 'production' ? require('configs/config.prod.js') : require('configs/config.dev.js'),
+     hot: hotState,
    },
     plugins: [
            new HtmlWebpackPlugin({
